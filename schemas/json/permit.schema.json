@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/primelogicsol/environmental-data-models/schemas/json/permit.schema.json",
+  "title": "Environmental Permit",
+  "description": "Demo schema for a permit, consent, authorization, or compliance obligation record.",
+  "type": "object",
+  "required": ["permit_id", "facility_id", "permit_type", "status", "effective_date"],
+  "properties": {
+    "permit_id": { "type": "string" },
+    "facility_id": { "type": "string" },
+    "permit_type": {
+      "type": "string",
+      "enum": ["water_discharge", "air_emissions", "waste_management", "stormwater", "construction", "operating_consent", "environmental_clearance", "other"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "submitted", "active", "expired", "suspended", "revoked", "under_review"]
+    },
+    "issuing_authority": { "type": "string" },
+    "effective_date": { "type": "string", "format": "date" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["condition_id", "description"],
+        "properties": {
+          "condition_id": { "type": "string" },
+          "description": { "type": "string" },
+          "frequency": { "type": "string" },
+          "evidence_required": { "type": "boolean" },
+          "responsible_party": { "type": "string" }
+        }
+      }
+    },
+    "reporting_obligations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "report_name": { "type": "string" },
+          "frequency": { "type": "string" },
+          "due_day": { "type": "string" },
+          "submission_channel": { "type": "string" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "source_system": { "type": "string" },
+        "record_owner": { "type": "string" }
+      }
+    }
+  }
+}
