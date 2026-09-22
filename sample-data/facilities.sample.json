@@ -1,0 +1,68 @@
+[
+  {
+    "facility_id": "FAC-DEMO-001",
+    "facility_name": "North River Water Treatment Facility",
+    "facility_type": "water_utility",
+    "status": "active",
+    "operator": {
+      "organization_name": "Demo City Water Department",
+      "organization_type": "municipal_utility",
+      "contact_email": "environmental.records@example.gov"
+    },
+    "location": {
+      "address": "100 Example Utility Road",
+      "city": "Demo City",
+      "state_or_region": "Example State",
+      "country": "USA",
+      "latitude": 39.1201,
+      "longitude": -77.2104,
+      "watershed": "North River Watershed",
+      "service_area": "Central Service District"
+    },
+    "regulatory_context": {
+      "jurisdiction": "Example State Environmental Agency",
+      "program_area": "drinking_water",
+      "primary_permit_id": "PERMIT-DEMO-001",
+      "reporting_frequency": "monthly"
+    },
+    "metadata": {
+      "created_at": "2026-09-22T12:00:00Z",
+      "updated_at": "2026-09-22T12:00:00Z",
+      "source_system": "demo_registry",
+      "data_quality_level": "reviewed"
+    }
+  },
+  {
+    "facility_id": "FAC-DEMO-002",
+    "facility_name": "South Valley Wastewater Treatment Plant",
+    "facility_type": "wastewater_treatment",
+    "status": "active",
+    "operator": {
+      "organization_name": "Demo Regional Sanitation Authority",
+      "organization_type": "public_authority",
+      "contact_email": "compliance@example.gov"
+    },
+    "location": {
+      "address": "250 Demonstration Plant Lane",
+      "city": "South Valley",
+      "state_or_region": "Example State",
+      "country": "USA",
+      "latitude": 38.9012,
+      "longitude": -77.0456,
+      "watershed": "South Valley Basin",
+      "service_area": "Regional Sanitation Zone"
+    },
+    "regulatory_context": {
+      "jurisdiction": "Example State Environmental Agency",
+      "program_area": "wastewater_discharge",
+      "primary_permit_id": "PERMIT-DEMO-002",
+      "reporting_frequency": "monthly"
+    },
+    "metadata": {
+      "created_at": "2026-09-22T12:00:00Z",
+      "updated_at": "2026-09-22T12:00:00Z",
+      "source_system": "demo_registry",
+      "data_quality_level": "verified"
+    }
+  }
+]
