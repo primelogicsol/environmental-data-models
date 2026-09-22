@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/primelogicsol/environmental-data-models/schemas/json/evidence-record.schema.json",
+  "title": "Evidence Record",
+  "description": "Demo schema for a compliance evidence record, document, photo, lab report, inspection artifact, or supporting file reference.",
+  "type": "object",
+  "required": ["evidence_id", "evidence_type", "related_entity_type", "related_entity_id", "status"],
+  "properties": {
+    "evidence_id": { "type": "string" },
+    "evidence_type": {
+      "type": "string",
+      "enum": ["document", "photo", "lab_report", "inspection_note", "sensor_export", "map_layer", "signature", "approval_record", "correspondence", "other"]
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "related_entity_type": {
+      "type": "string",
+      "enum": ["facility", "permit", "monitoring_event", "inspection", "incident", "report", "corrective_action", "other"]
+    },
+    "related_entity_id": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "submitted", "under_review", "accepted", "rejected", "archived"]
+    },
+    "file_reference": {
+      "type": "object",
+      "properties": {
+        "file_name": { "type": "string" },
+        "file_type": { "type": "string" },
+        "storage_reference": { "type": "string" },
+        "checksum": { "type": "string" },
+        "uploaded_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "chain_of_custody": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string" },
+          "actor": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "reviewer": { "type": "string" },
+        "reviewed_at": { "type": "string", "format": "date-time" },
+        "decision": { "type": "string", "enum": ["accepted", "rejected", "needs_revision", "pending"] },
+        "comments": { "type": "string" }
+      }
+    }
+  }
+}
