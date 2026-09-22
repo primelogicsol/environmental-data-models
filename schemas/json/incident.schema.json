@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/primelogicsol/environmental-data-models/schemas/json/incident.schema.json",
+  "title": "Environmental or Infrastructure Incident",
+  "description": "Demo schema for an incident, exceedance, service disruption, spill, outage, environmental complaint, or emergency event.",
+  "type": "object",
+  "required": ["incident_id", "incident_type", "status", "reported_at", "severity"],
+  "properties": {
+    "incident_id": { "type": "string" },
+    "facility_id": { "type": "string" },
+    "incident_type": {
+      "type": "string",
+      "enum": ["permit_exceedance", "spill", "service_disruption", "equipment_failure", "public_complaint", "water_quality_event", "air_quality_event", "waste_event", "emergency_response", "other"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["reported", "triaged", "investigating", "mitigating", "resolved", "closed", "reopened"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "critical"]
+    },
+    "reported_at": { "type": "string", "format": "date-time" },
+    "description": { "type": "string" },
+    "location": {
+      "type": "object",
+      "properties": {
+        "address": { "type": "string" },
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "location_notes": { "type": "string" }
+      }
+    },
+    "response_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "action_id": { "type": "string" },
+          "action_type": { "type": "string" },
+          "assigned_to": { "type": "string" },
+          "status": { "type": "string" },
+          "due_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "public_notification": {
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "issued": { "type": "boolean" },
+        "issued_at": { "type": "string", "format": "date-time" },
+        "message_reference": { "type": "string" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_by": { "type": "string" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "source_system": { "type": "string" },
+        "review_status": { "type": "string" }
+      }
+    }
+  }
+}
