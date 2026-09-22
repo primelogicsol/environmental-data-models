@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/primelogicsol/environmental-data-models/schemas/json/facility.schema.json",
+  "title": "Facility",
+  "description": "Demo schema for an environmental facility, utility asset, regulated site, or monitored infrastructure location.",
+  "type": "object",
+  "required": ["facility_id", "facility_name", "facility_type", "status", "location"],
+  "properties": {
+    "facility_id": {
+      "type": "string",
+      "description": "Stable public or internal facility identifier."
+    },
+    "facility_name": {
+      "type": "string"
+    },
+    "facility_type": {
+      "type": "string",
+      "enum": ["water_utility", "wastewater_treatment", "industrial_site", "monitoring_station", "public_infrastructure", "solid_waste_site", "other"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "proposed", "decommissioned", "under_review"]
+    },
+    "operator": {
+      "type": "object",
+      "properties": {
+        "organization_name": { "type": "string" },
+        "organization_type": { "type": "string" },
+        "contact_email": { "type": "string", "format": "email" }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": ["latitude", "longitude"],
+      "properties": {
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "state_or_region": { "type": "string" },
+        "country": { "type": "string" },
+        "latitude": { "type": "number", "minimum": -90, "maximum": 90 },
+        "longitude": { "type": "number", "minimum": -180, "maximum": 180 },
+        "watershed": { "type": "string" },
+        "service_area": { "type": "string" }
+      }
+    },
+    "regulatory_context": {
+      "type": "object",
+      "properties": {
+        "jurisdiction": { "type": "string" },
+        "program_area": { "type": "string" },
+        "primary_permit_id": { "type": "string" },
+        "reporting_frequency": { "type": "string" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "source_system": { "type": "string" },
+        "data_quality_level": { "type": "string", "enum": ["verified", "reviewed", "self_reported", "estimated", "unknown"] }
+      }
+    }
+  }
+}
